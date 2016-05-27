@@ -1,0 +1,51 @@
+{% paginate collection.products by 48 %}
+
+<h1 class="desktop-6 desktop-push-3 tablet-3 mobile-3">
+  {% if collection.handle == 'all' %}{{ 'collections.general.all_products' | t }}{% else %}{{ collection.title }}{% endif %}
+</h1>
+
+<div id="collection-description" class="desktop-12 tablet-6 mobile-3">
+  <div class="rte">
+    {{ collection.description | remove: "[banner]" }}
+  </div>
+</div>
+
+<div class="clear"></div>
+
+
+<!-- Start Sidebar -->
+{% if settings.collection_sidebar %}
+{% include 'collection-sidebar' %}
+{% endif %}
+<!-- End Sidebar -->
+
+
+<div class="{% if settings.collection_sidebar %}desktop-9 tablet-6{% else %}desktop-12 tablet-6{% endif %} mobile-3">
+
+  {% if settings.collection_sidebar == false %}
+  {% if settings.filters %}
+  <div id="full-width-filter" class="desktop-12 tablet-6 mobile-3">
+    {% include 'filter' %}
+  </div>
+  {% endif %}  
+  {% endif %}
+
+  <div id="product-loop">
+
+    {% for product in collection.products %}
+    {% assign products-per-row = settings.products-per-row %}
+    <div id="product-listing-{{ product.id }}" class="product-index {% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-half" data-alpha="{{ product.title }}" data-price="{{ product.price }}">           
+      {% include 'product-listing' %}
+    </div>
+
+    {% endfor %} 
+
+  </div>
+</div>
+
+
+{% include 'pagination' %}
+
+{% endpaginate %}
+
+

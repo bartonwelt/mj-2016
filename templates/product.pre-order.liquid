@@ -1,0 +1,173 @@
+<div id="product-{{ product.id }}">
+
+  <!-- For Mobile -->
+  <div id="mobile-product" class="desktop-12 tablet-6 mobile-3">
+    <div class="flexslider">
+      <ul class="slides">    
+        {% for image in product.images %}
+        <li><img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"></li>
+        {% endfor %}      
+      </ul>
+    </div>  
+  </div>   
+
+  <!-- For Desktop -->
+
+
+  <div id="product-photos" class="desktop-7 tablet-3 mobile-3">
+
+
+    {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+
+    <div class="bigimage desktop-10 tablet-5">
+      <img id="{{ product.id }}" src="{{ featured_image | img_url: '1024x1024' }}" data-image-id="{{ image.id }}" data-zoom-image="{{ featured_image | img_url: 'master' }}" alt='{{ image.alt }}' title="{{ product.title }}"/>
+    </div>
+
+    <div id="{{ product.id }}-gallery" class="desktop-2 tablet-1">	
+      <div class="thumbnail-slider">
+        {% for image in product.images %}
+        <div class="slide">
+          <a href="#" data-image="{{ image | product_img_url: '1024x1024' }}" data-image-id="{{ image.id }}" data-zoom-image="{{ image | product_img_url: 'master' }}">
+            <img class="thumbnail" src="{{ image | product_img_url: 'compact' }}" data-image-id="{{ image.id }}" alt="{{ image.alt }}" data-image-id="{{ image.id }}" />
+          </a>
+        </div>
+        {% endfor %} 
+      </div>
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $('.bxslider').bxSlider({
+        pagerCustom: '#bx-pager'
+      });
+
+      $('.thumbnail-slider').bxSlider({
+        mode: 'vertical',
+        minSlides: 3,
+        slideMargin: 10,
+        infiniteLoop: false,
+        pager: false,
+        prevText: "",
+        nextText: "",
+        hideControlOnEnd: true
+      });    
+
+      //initiate the plugin and pass the id of the div containing gallery images
+      $("#{{ product.id }}").elevateZoom({
+        gallery:'{{ product.id }}-gallery',
+        cursor: 'pointer', 
+        galleryActiveClass: 'active', 
+        borderColour: '#eee', 
+        borderSize: '1' 
+        }); 
+
+      //pass the images to Fancybox
+      $("#{{ product.id }}").bind("click", function(e) {  
+        var ez =   $('#{{ product.id }}').data('elevateZoom');	
+        $.fancybox(ez.getGalleryList());
+      return false;
+    });	  
+
+    }); 
+  </script>
+
+
+  <div id="product-right" class="desktop-5 tablet-3 mobile-3">
+    <div id="product-description">
+      {% if settings.vendor %}<h3>{{ product.vendor }}</h3>{% endif %}
+      <h1>{{ product.title | escape }}</h1>
+      {% if settings.subtitle %}<p>{{ page_title }}</p>{% endif %}      
+      <p id="product-price">
+        {% if product.available %}
+        {% if product.compare_at_price > product.price %}
+        <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
+        {% else %}
+        <span class="product-price" itemprop="price">{{ product.price | money }}</span>
+        {% endif %}
+        {% else %}
+        <span class="product-price" itemprop="price">{{ 'products.product.sold_out' | t }}</span>
+        {% endif %}
+      </p> 
+
+      {% include 'pre-order' %}   
+
+      <div class="desc">
+        {% include 'social' with product %}
+      </div>
+    </div>
+
+    <ul id="popups">
+      {% if settings.popup-one != blank %}<li class="first"><a href="#pop-one" class="fancybox">{{ pages[settings.popup-one].title }}</a></li>{% endif %}
+      {% if settings.popup-two != blank %}<li><a href="#pop-two" class="fancybox">{{ pages[settings.popup-two].title }}</a></li>{% endif %}
+      {% if settings.popup-three != blank %}<li><a href="#pop-three" class="fancybox">{{ pages[settings.popup-three].title }}</a></li>{% endif %}
+      {% if settings.popup-4 %}<li class="last"><a href="#pop-four" class="fancybox">{{ 'products.product.popup_question' | t }}</a></li>{% endif %}
+    </ul>
+     {% if settings.popup-one != blank %}<div id="pop-one" style="display: none">{{ pages[settings.popup-one].content }}</div>{% endif %}
+     {% if settings.popup-two != blank %}<div id="pop-two" style="display: none">{{ pages[settings.popup-two].content }}</div>{% endif %}
+     {% if settings.popup-three != blank %}<div id="pop-three" style="display: none">{{ pages[settings.popup-three].content }}</div>{% endif %}
+     {% if settings.popup-4 %}<div id="pop-four" style="display: none">{% include 'question' %}</div>{% endif %}
+
+  </div>
+
+
+
+
+  <div class="clear"></div>
+
+  <div id="lower-description" class="desktop-8 desktop-push-2 tablet-6 mobile-3">
+    <div class="section-title lines"><h2>{{ 'products.product.details' | t }}</h2></div>  
+    <div class="rte">{{ product.description }}</div> 
+  </div>
+
+
+  <div class="clear"></div>
+
+  {% if collection %}
+  {% include 'related-products' %}
+  {% endif %}
+
+  <div class="clear"></div>
+
+  {% if collection %} 
+  <div id="product-navigation" class="desktop-12 tablet-6 mobile-3">
+    <span class="backto">
+      {{ 'products.product.back_to' | t }} {{ collection.title | link_to: collection.url }}
+    </span>
+
+
+
+    <div id="back-forth">
+      {% if collection.previous_product %}
+      {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
+      <span class="prev-prod"> 
+        {{ 'products.product.previous_product_html' | t | link_to: prev_url }}
+        <img id="previous-product-image" />
+        {% endif %}
+      </span>
+      {% if collection.next_product %} 
+      {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
+      <span class="next-prod">
+        <img id="next-product-image" />
+        {{ 'products.product.next_product_html' | t | link_to: next_url }}
+      </span>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    jQuery.getJSON('{{ collection.next_product | append: '.js' }}', function(product) {
+                   jQuery('#next-product-image').attr('src', product.images[0].replace(/(\.jpg|\.png|\.jpeg|\.gif)/, '_small$1'));
+    });
+    jQuery.getJSON('{{ collection.previous_product | append: '.js' }}', function(product) {
+                   jQuery('#previous-product-image').attr('src', product.images[0].replace(/(\.jpg|\.png|\.jpeg|\.gif)/, '_small$1'));
+    });
+  </script>   
+
+  {% endif %}  
+
+
+</div>

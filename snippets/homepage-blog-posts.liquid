@@ -1,0 +1,10 @@
+<section class="homepage-section animate wow fadeIn no-fouc">
+<div class="row">
+  <div class="section-title lines desktop-12 tablet-6 mobile-3"><h2>BLOG POSTS</h2></div>
+  <div id="article-loop">
+    {% for article in blogs.news.articles limit: 3 %}   
+    {% include 'article-loop' %}
+    {% endfor %} 
+  </div>  
+</div>
+</section>

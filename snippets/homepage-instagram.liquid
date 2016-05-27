@@ -1,0 +1,40 @@
+<section class="homepage-section animate wow fadeIn no-fouc">
+
+  {% assign url = '{{image}}' %}
+  {% assign caption = '{{caption}}' %}
+  <div id="instagram-card" class="row">
+    <div class="section-title lines"><h2><a href="http://instagram.com/{{ settings.instagram-id }}" target="_blank">{{ 'layout.homepage.instagram' | t }} @{{ settings.instagram-id }}</a> {{ 'layout.homepage.instagram_follow_where' | t }}</h2></div>  
+
+    {% if settings.instagram-user-id == blank %}
+    <div class="theme-instructions">
+      <div class="onboard desktop-12 tablet-6 mobile-3">
+        <h3>Home page - instagram</h3>
+        You are seeing this message as you have enabled the Instagram section of your Home page options
+        but have yet to add your Instagram credentials to the section titled: <strong>Home page - Instagram</strong>.
+        <br /><br />
+        To configure this section go to the <a href="/admin/themes/59191747/editor">theme Customizer</a> and open the section named: <strong>Home page - Instagram</strong>.
+        <br /><br />
+        Need more help? take a look at our <a target="_blank" href="http://support.undergroundmedia.co.uk/customer/portal/articles/1483035-instagram-feed">tutorial</a>.
+      </div>
+      <div class="theme-content" style="min-height: 100px">
+        {% for i in (1..6) %}
+        <div class="desktop-2 tablet-1 mobile-1">
+          <img src="//cdn.shopify.com/s/images/themes/product-{{ forloop.index }}.png" alt="{{ image.alt }}" />
+        </div>
+        {% endfor %}
+      </div>        
+    </div>
+    {% endif %}    
+
+    <div id="instafeed"></div>
+    <script type="text/javascript">
+      var userFeed = new Instafeed({
+        get: 'user',
+        userId: {{ settings.instagram-user-id }},
+        accessToken: '{{ settings.instagram-access-token }}',
+        template: '<a class="fancybox desktop-2 tablet-1 mobile-half padded" href="{{url}}" rel="ig" title="{{ caption }}"><img class="instagram-image" src="{{ url }}" /></a>'
+      });
+      userFeed.run();        
+    </script>
+  </div>
+</section>

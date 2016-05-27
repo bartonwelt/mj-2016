@@ -1,0 +1,52 @@
+<h1 class="desktop-6 desktop-push-3 tablet-3 mobile-3">
+  {{ 'collections.general.all_collections' | t }}
+</h1>
+
+
+<div id="page" class="desktop-12 tablet-6 mobile-3">
+  {% paginate collections by 48 %}
+
+  {% if collections.size > 0 %}
+
+  <div class="desktop-12 tablet-6 mobile-3">
+    <div id="product-loop">  
+
+      <div id="product-loop">
+        {% for collection in collections %}
+        {% assign products-per-row = settings.products-per-row %}
+
+        <div class="product-index {% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-half" data-alpha="{{ collection.title }}">           
+          <div class="collection-image">
+            <a href="{{ collection.url }}" title="{{ collection_title }}">
+              {% if collection.image %}
+              {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}
+              {% else %}
+              {{ collection.products.first.featured_image | product_img_url: 'grande' | img_tag: collection_title }}
+              {% endif %}
+            </a>     
+          </div>
+
+          <div class="product-info">
+            <div class="product-info-inner">
+              <a href="{{ collection.url }}" title="{{ collection_title }} collection">
+                <h3>{{ collection.title }}</h3>
+                {% if settings.collection_count %}<p>{{ 'collections.general.items_count' | t: count: collection.products_count }}</p>{% endif %}
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+  {% else %}
+  <p>{{ 'collections.general.no_matches' | t }}</p>
+  {% endif %}
+
+  {% include 'pagination' %}
+
+  {% endpaginate %}
+</div>
+

@@ -1,0 +1,31 @@
+<section class="homepage-section animate wow fadeIn no-fouc">
+  <div class="row">
+    <div id="index-content-left" class="desktop-12 tablet-6 mobile-3">
+      <div class="section-title lines"><h2>{{ pages[settings.pages-left].title }}</h2></div>  
+      
+      {% if settings.pages-left == blank %}
+      <div class="theme-instructions">
+        <div class="onboard desktop-12 tablet-6 mobile-3">
+          <h3>Home page - featured content</h3>
+          You are seeing this message as you have enabled the Featured content section of your Home page options
+          but have yet to choose a page from the section titled: <strong>Home page - featured content</strong> dropdown.
+          <br /><br />
+          To configure this section go to the <a href="/admin/themes/59191747/editor">theme Customizer</a> and open the section named: <strong>Home page - featured content</strong>.
+          <br /><br />
+          Need more help? take a look at our <a target="_blank" href="http://support.undergroundmedia.co.uk/customer/portal/articles/2386086-home-page---featured-content">tutorial</a>.
+        </div>
+        
+        <div class="theme-content" style="height: 100px">
+          Write a few sentences to tell people about your store (the kind of products you sell, your mission, etc). You can also add images and videos to help tell your story and generate more interest in your shop.
+          <br />To edit the content on this page, go to the <a href="/admin/pages">Pages</a> section of your Shopify admin.
+        </div>        
+        
+      </div>
+      {% endif %}        
+      
+      <div class="pages-left-content">
+        {{ pages[settings.pages-left].content }}
+      </div>
+    </div>
+  </div>
+</section> 

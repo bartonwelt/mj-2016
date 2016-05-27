@@ -1,0 +1,59 @@
+<section class="homepage-section animate wow fadeIn no-fouc">
+  <div id="collection-loop" class="row">
+    {% if settings.homepage-collect-title ==  blank %}
+    <div class="section-title desktop-12 tablet-6 mobile-3 lines"><h2>{{ 'layout.homepage.collections_title' | t }}</h2></div>
+    {% else %}
+    <div class="section-title desktop-12 tablet-6 mobile-3 lines"><h2>{{ settings.homepage-collect-title }}</h2></div>
+    {% endif %}
+
+
+    {% if settings.home-collection-linklist == blank %}
+    <div class="theme-instructions">
+      <div class="onboard desktop-12 tablet-6 mobile-3">
+        <h3>Home page - featured collections</h3>
+        You are seeing this message as you have enabled the Featured collections section of your Home page options
+        but have yet to choose a menu from the section titled: <strong>Home page - featured collections</strong>
+        <br /><br />
+        To configure this section go to the <a href="/admin/themes/59191747/editor">theme Customizer</a> and open the section named: <strong>Home page - featured collections</strong>.
+        <br /><br />
+        Need more help? take a look at our <a target="_blank" href="http://support.undergroundmedia.co.uk/customer/portal/articles/2384080-home-page---featured-collections">tutorial</a>.
+      </div>
+
+      <div class="theme-content">
+        {% for i in (1..4) %}
+        <div class="collection-index desktop-3 tablet-half mobile-half{% cycle ' first', '', '', ' last' %}">
+          <div class="collection-image">
+            <img src="//cdn.shopify.com/s/images/themes/product-{{ forloop.index }}.png" alt="{{ image.alt }}" />
+          </div>
+          <div class="collection-info">
+            <h3>Sample collection</h3>
+            {% if settings.collection_count %}<p>5 products</p>{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% for link in linklists[settings.home-collection-linklist].links %}
+    {% assign collection = link.object %}
+    <div class="collection-index desktop-3 tablet-half mobile-half{% cycle ' first', '', '', ' last' %}" data-alpha="{{ collection.title }}">  
+      <div class="collection-image">
+        <a href="{{ collection.url }}" title="{{ collection_title }}">
+          {% if collection.image %}
+          {{ collection.image.src | collection_img_url: 'grande' | img_tag: collection_title }}
+          {% else %}
+          {{ collection.products.first.featured_image | product_img_url: 'grande' | img_tag: collection_title }}
+          {% endif %}
+        </a>     
+      </div>
+      <div class="collection-info">
+        <a href="{{ collection.url }}" title="{{ collection.title }}">
+          <h3>{{ collection.title }}</h3>
+          {% if settings.collection_count %}<p>{{ 'collections.general.items_count' | t: count: collection.products_count }}</p>{% endif %}
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

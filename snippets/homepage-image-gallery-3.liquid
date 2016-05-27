@@ -1,0 +1,35 @@
+{% assign grid = 0 %}
+{% if settings.promo9 %}{% assign grid = grid | plus: 1 %}{% endif %}
+{% if settings.promo10 %}{% assign grid = grid | plus: 1 %}{% endif %}
+{% if settings.promo11 %}{% assign grid = grid | plus: 1 %}{% endif %} 
+{% if settings.promo12 %}{% assign grid = grid | plus: 1 %}{% endif %}   
+{% if grid > 0 %}
+<section class="homepage-section animate wow fadeIn no-fouc">
+  <div class="row">
+    {% assign promo = 'promo9' %}
+    {% if settings.promo9 %}        
+    <div class="homepage-promo desktop-{{ 12 | divided_by: grid }} mobile-3">
+      {% include 'homepage_promo' %}
+    </div>
+    {% endif %}
+    {% assign promo = 'promo10' %}
+    {% if settings.promo10 %}  
+    <div class="homepage-promo desktop-{{ 12 | divided_by: grid }} mobile-3">
+      {% include 'homepage_promo' %}
+    </div>
+    {% endif %}        
+    {% assign promo = 'promo11' %}
+    {% if settings.promo11 %}  
+    <div class="homepage-promo desktop-{{ 12 | divided_by: grid }} mobile-3">
+      {% include 'homepage_promo' %}
+    </div>
+    {% endif %}
+    {% assign promo = 'promo12' %}
+    {% if settings.promo12 %}  
+    <div class="homepage-promo desktop-{{ 12 | divided_by: grid }} mobile-3">
+      {% include 'homepage_promo' %}
+    </div>
+    {% endif %}        
+  </div>
+</section>
+{% endif %}

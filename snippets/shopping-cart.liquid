@@ -1,0 +1,29 @@
+{% if cart.item_count == 0 %}
+<p class="empty-cart">
+{{ 'cart.general.empty' | t }}
+</p>
+{% else %}
+{% for item in cart.items %}
+<div class="quick-cart-item">
+  <div class="quick-cart-image">
+    <a href="{{ item.url }}" title="{{ item.product.title | escape }}">
+      {% assign found = false %}
+      {% for img in item.product.images %}
+      {% if found == false and item.variant.title contains img.alt %}
+      <img src="{{ img | product_img_url: 'small' }}"  alt="{{ item.alt | escape }}" />
+      {% assign found = true %}
+      {% endif %}
+      {% endfor %}
+      {% if found == false %}
+      <img src="{{ item | img_url: 'small' }}"  alt="{{ item.title | escape }}" />
+      {% endif %}           
+    </a>
+  </div>
+  <div class="quick-cart-details">
+    <p><a href="{{ item.url }}">{{ item.title }}</a></p>
+      <p>{{ item.price | money }}</p>        
+    <a class="remove_item" href="#" data-id="{{ item.variant.id }}">{{ 'cart.general.remove' | t }}</a>
+  </div>
+</div>
+{% endfor %}
+{% endif %}

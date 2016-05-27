@@ -1,0 +1,47 @@
+<div class="article-index desktop-4 tablet-3 mobile-3{% cycle ' first', '', ' last' %}" id="article-{{ article.id }}" data-alpha="{{ article.title }}">   
+
+  <div class="article-info"> 
+
+    <div class="article-info-inner">
+      <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+      {% assign published_at = article.published_at | date: format: 'month_date_year' %}
+      <p class="posted">{{ 'blogs.article.posted_on_date_html' | t: date: published_at }}</p>
+
+      {% if template != 'index' %}
+      {% if article.comments_count > 0 %}
+      <p class="posted">{{ article.comments_count }} Comments</p>
+      {% endif %} 
+      {% endif %}
+
+      <div class="article-content">
+        {% if article.image %}<a href="{{ article.url }}"><img class="article-image" src="{{ article.image | img_url: 'grande' }}" alt="{{ article.title }}"></a>{% endif %}
+        <div class="clear"></div>
+        {% if article.excerpt == blank %}
+        {{ article.content | strip_html | truncate: 90 }}
+        {% else %}
+        {{ article.excerpt }}
+        {% endif %}
+      </div>
+
+      {% if template != 'index' %}
+      {% if article.tags.size > 0 %}
+      <p class="post-tags">{{ 'blogs.article.tags' | t }}:
+        {% for tag in article.tags %} 
+        <a href="{{ blog.url }}/{{ 'blogs.article.tagged' | t }}/{{ tag | handle }}">
+          {{ tag }}
+        </a>
+        {% endfor %}
+      </p>
+      {% endif %}   
+
+
+      <div class="readmore">
+        <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+      </div>
+      {% include 'social' with article %}           
+      {% endif %}
+    </div>
+
+  </div>
+
+</div>

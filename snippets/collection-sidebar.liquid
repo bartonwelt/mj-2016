@@ -1,0 +1,84 @@
+<a class="show mobile-3" href="#"><i class="icon-align-justify icon-2x"></i></a>
+
+<div class="desktop-3 tablet-4 tablet-push-1 mobile-3" id="sidebar">
+
+  {% if collection.image %}
+  {{ collection.image.src | collection_img_url: 'compact' | img_tag: collection_title }}
+  {% endif %}   
+
+  <ul>
+    {% for link in linklists[collection.handle].links %}
+    <li>{{ link.title | link_to: link.url }}</li>
+    {% endfor %}
+  </ul>  
+
+  <h4>{{ linklists[settings.collection-side-1].title }}</h4>
+  <ul>  
+    {% for link in linklists[settings.collection-side-1].links %}
+    <li>{{ link.title | link_to: link.url }}</li>
+    {% endfor %}
+  </ul>
+
+  {% if settings.collection-links-2 %}
+  <h4>{{ linklists[settings.collection-side-2].title }}</h4>   
+  <ul>
+    {% for link in linklists[settings.collection-side-2].links %}
+    <li>{{ link.title | link_to: link.url }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if settings.collection-links-3 %}
+  <h4>{{ linklists[settings.collection-side-3].title }}</h4>
+   
+  <ul>   
+    {% for link in linklists[settings.collection-side-3].links %}
+    <li>{{ link.title | link_to: link.url }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if settings.collection-links-4 %}
+  <h4>{{ linklists[settings.collection-side-4].title }}</h4>   
+  <ul>   
+    {% for link in linklists[settings.collection-side-4].links %}
+    <li>{{ link.title | link_to: link.url }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <!-- Start Filtering -->
+  {% if settings.filters %}	
+  <div id="side-filter">
+    {% include 'dropdown-filter' %}
+  </div>
+  {% endif %}
+
+  {% if settings.shop-by-designer %}
+  {% if collection.handle == "all" %}
+  {% if settings.shop-by-designer-title ==  blank %}
+  <h4>{{ 'collections.sidebar.designers' | t }}</h4>
+  {% else %}
+  <h4>{{ settings.shop-by-designer-title }}</h4>
+  {% endif %}    
+  <ul>
+    {% for product_vendor in shop.vendors %}
+    <li>{{ product_vendor | link_to_vendor  }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+
+  {% if settings.shop-by-designer-title ==  blank %}
+  <h4>{{ 'collections.sidebar.designers' | t }}</h4>
+  {% else %}
+  <h4>{{ settings.shop-by-designer-title }}</h4>
+  {% endif %}   
+  <ul>
+    {% for product_vendor in collection.all_vendors %}
+    <li class="{{ product_vendor | handelize }}">{{ product_vendor | link_to_vendor }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endif %}  
+
+</div>

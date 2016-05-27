@@ -1,0 +1,45 @@
+{% form 'contact' %}
+
+{% if form.posted_successfully? %}
+<div class="successForm feedback">
+  <p>Thanks for contacting us! We'll get back to you as soon as possible.</p>
+</div>
+{% endif %}
+
+{% if form.errors %}
+<div class="errorForm feedback">
+  <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+  <p>Oops, sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
+  {% for field in form.errors %}
+    <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+  {% endfor %}
+</div>
+{% endif %}
+ 
+<div id="contactFormWrapper">
+  <p>
+    <label>Your Name:</label>
+    <input type="text" id="contactFormName" name="contact[name]" placeholder="Name" />
+  </p>
+  <p>
+    <label>Email:</label>
+    <input type="email" id="contactFormEmail" name="contact[email]" placeholder="Email" />
+  </p>
+  <p>
+    <label>Phone Number:</label>
+    <input type="text" id="contactFormTelephone" name="contact[phone]" placeholder="Contact Number" />
+  </p> 
+
+  <input type="hidden" name="contact[product]" value="{{product.title}}">
+  <input type="hidden" name="contact[producturl]" value="{{ shop.url}}/{{product.url}}">
+
+  <p>
+    <label>Message:</label>
+    <textarea rows="15" cols="150" id="contactFormMessage" name="contact[body]" placeholder="Your Message" style="min-width: 300px"></textarea>
+  </p>
+  <p>
+    <input type="submit" id="contactFormSubmit" class="secondary button" value="SEND" />
+  </p>            
+</div><!-- contactWrapper -->
+
+{% endform %}

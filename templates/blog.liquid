@@ -1,0 +1,18 @@
+<div id="page" class="desktop-12 tablet-6 mobile-3">
+  <h1 class="page-title">{% if current_tags %}{{ blog.title | link_to: blog.url }} &raquo; {{ current_tags.first }}{% else %}{{ blog.title }}{% endif %}</h1>
+  {% paginate blog.articles by 48 %}
+  <div class="clear"></div>
+  <div class="desktop-12 tablet-6 mobile-3">
+    <div id="article-loop">
+      {% for article in blog.articles  %}   
+      {% include 'article-loop' %}
+      {% endfor %} 
+    </div>
+  </div>
+  {% include 'pagination' %}
+  {% endpaginate %}
+</div>
+
+
+
+
