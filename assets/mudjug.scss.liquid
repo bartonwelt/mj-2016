@@ -1,0 +1,56 @@
+/* Global
+---------------------------- */
+
+// Mostly re-sizing retina images
+
+body {
+  background-attachment: fixed;
+  background-size: 300px 300px;
+}
+
+#logo {
+  a {
+    img {
+      max-width: 140px;
+    }
+  }
+}
+
+/* Typography
+---------------------------- */
+
+h1,
+#page h1 {
+  margin-bottom: 2rem;
+}
+
+h2, h3 {
+  margin-bottom: 1.5rem;
+}
+
+h4, h5, h6 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+
+  + h1,
+  + h2,
+  + h3 {
+    margin-top: 2rem;
+  }
+}
+
+/* Media Queries
+---------------------------- */
+
+@media screen and(min-width: 33.9rem) {
+  #logo {
+    a {
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+}
