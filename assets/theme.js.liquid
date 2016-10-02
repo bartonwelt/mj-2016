@@ -138,10 +138,6 @@ $(document).ready(function() {
   });
   
   
-  // Custom select dropdowns  
-	$(".styled-select").selecter();  
-  
-  
   // Scroll to top button
   $(window).scroll(function(){
     if ($(this).scrollTop() > 100) {
@@ -211,7 +207,11 @@ function addToCartSuccess (jqXHR, textStatus, errorThrown){
     dataType: 'json',
     success: updateCartDesc
   });
-
+  {% if settings.show_multiple_currencies %}
+  $(document).ajaxComplete(function() {
+    Currency.convertAll(defaultCurrency, Currency.currentCurrency);
+  });
+  {% endif %}
   $('#crt').addClass('block');
 
   setTimeout(function () { 

@@ -83,8 +83,10 @@
   }); 
   
   $('.add').on('click', addToCart ); 
+  {% if settings.show_multiple_currencies %}
   $(document).ajaxComplete(function() {
     Currency.convertAll(defaultCurrency, Currency.currentCurrency);
   });
+  {% endif %}
   
 </script>

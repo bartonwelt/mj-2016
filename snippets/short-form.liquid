@@ -117,10 +117,7 @@
       jQuery('#product-{{ product.id }} .single-option-selector').eq(optionIndex).find('option').filter(function() { return jQuery(this).text() == optionValue }).parent().val(optionValue).trigger('change');	   
      }); 
      {% endif %}
-      
-        $('.single-option-selector').selecter();  
-  
-      
+        
        
    });       
 </script>
