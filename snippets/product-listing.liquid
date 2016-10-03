@@ -4,13 +4,13 @@
   {% if col.handle == 'new' %}
   <div class="new icn">{{ 'products.general.new' | t }}</div>
   {% endif %}
-  {% endfor %}        
+  {% endfor %}
   {% if product.price < product.compare_at_price %}
   <div class="sale-item icn">{{ 'products.general.sale' | t }}</div>
   {% endif %}
   {% else %}
   <div class="so icn">{{ 'products.general.sold' | t }}</div>
-  {% endif %}   
+  {% endif %}
 </div>
 
 <div class="prod-image">
@@ -23,12 +23,12 @@
   {% endif %}
 </div>
 
-<div class="product-info"> 
+<div class="product-info">
   <div class="product-info-inner">
-    <a href="{{ product.url | within: collection }}"> 
+    <a href="{{ product.url | within: collection }}">
       {% if settings.vendor %}<h4>{{ product.vendor }}</h4>{% endif %}
       <h3>{{ product.title }}</h3>
-    </a>        
+    </a>
 
     <div class="price">
       {% if product.price < product.compare_at_price %}
@@ -36,14 +36,14 @@
       <div class="was">{{ product.compare_at_price | money }}</div>
       {% else %}
       <div class="prod-price">{% if product.price_varies %} {{ 'products.general.from' | t }} {{ product.price_min | money }} - {{ product.price_max | money }} {% else %}{{ product.price | money }}{% endif %}</div>
-      {% endif %}	
+      {% endif %}
     </div>
 
     {% if settings.alternate_colors %}
     <div class="prod-colors">
       {% include 'product-listing-swatches' %}
-    </div> 
-    {% endif %}    
+    </div>
+    {% endif %}
 
   </div>
 </div>

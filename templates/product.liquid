@@ -2,7 +2,7 @@
 
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
-  
+
 <!-- For Mobile -->
   <div id="mobile-product" class="desktop-12 tablet-6 mobile-3">
     <ul class="bxslider">
@@ -10,7 +10,7 @@
       <li><img data-image-id="{{ image.id }}" src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"></li>
       {% for image in product.images %}
       <li><img data-image-id="{{ image.id }}" src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}"></li>
-      {% endfor %}      
+      {% endfor %}
     </ul>
 
     <div id="bx-pager" style="display: none">
@@ -19,7 +19,7 @@
       {% endfor %}
     </div>
 
-  </div>   
+  </div>
 
   <!-- For Desktop -->
 
@@ -32,7 +32,7 @@
       <img id="{{ product.id }}" src="{{ featured_image | img_url: '1024x1024' }}" data-image-id="{{ image.id }}" data-zoom-image="{{ featured_image | img_url: 'master' }}" alt='{{ image.alt }}' title="{{ product.title }}"/>
     </div>
 
-    <div id="{{ product.id }}-gallery" class="desktop-2 tablet-1">	
+    <div id="{{ product.id }}-gallery" class="desktop-2 tablet-1">
       <div class="thumbnail-slider">
         {% for image in product.images %}
         <div class="slide">
@@ -40,7 +40,7 @@
             <img class="thumbnail" src="{{ image | product_img_url: 'compact' }}" data-image-id="{{ image.id }}" alt="{{ image.alt }}" data-image-id="{{ image.id }}" />
           </a>
         </div>
-        {% endfor %} 
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -63,25 +63,25 @@
         prevText: "",
         nextText: "",
         hideControlOnEnd: true
-      });    
+      });
 
       //initiate the plugin and pass the id of the div containing gallery images
       $("#{{ product.id }}").elevateZoom({
         gallery:'{{ product.id }}-gallery',
-        cursor: 'pointer', 
-        galleryActiveClass: 'active', 
-        borderColour: '#eee', 
-        borderSize: '1' 
-        }); 
+        cursor: 'pointer',
+        galleryActiveClass: 'active',
+        borderColour: '#eee',
+        borderSize: '1'
+        });
 
       //pass the images to Fancybox
-      $("#{{ product.id }}").bind("click", function(e) {  
-        var ez =   $('#{{ product.id }}').data('elevateZoom');	
+      $("#{{ product.id }}").bind("click", function(e) {
+        var ez =   $('#{{ product.id }}').data('elevateZoom');
         $.fancybox(ez.getGalleryList());
       return false;
-    });	  
+    });
 
-    }); 
+    });
   </script>
 
 
@@ -90,7 +90,7 @@
     <div id="product-description">
       {% if settings.vendor %}<h3>{{ product.vendor }}</h3>{% endif %}
       <h1 itemprop="name">{{ product.title }}</h1>
-      {% if settings.subtitle %}<p>{{ page_title }}</p>{% endif %}      
+      {% if settings.subtitle %}<p>{{ page_title }}</p>{% endif %}
 	  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <p id="product-price">
         {% if product.available %}
@@ -102,17 +102,17 @@
         {% else %}
         <span class="product-price" itemprop="price">{{ 'products.product.sold_out' | t }}</span>
         {% endif %}
-      </p> 
-        
+      </p>
+
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
-      {% include 'short-form' %}   
-        
+      {% include 'short-form' %}
+
         {% if settings.product-description == 'right' %}
-        <div class="rte" itemprop="description">{{ product.description }}</div> 
+        <div class="rte" itemprop="description">{{ product.description }}</div>
         {% endif %}
-        
+
       </div>
       <div class="desc">
         {% include 'social' with product %}
@@ -139,8 +139,8 @@
   <div class="clear"></div>
 
   <div id="lower-description" class="desktop-8 desktop-push-2 tablet-6 mobile-3">
-    <div class="section-title lines"><h2>{{ 'products.product.details' | t }}</h2></div>  
-    <div class="rte" itemprop="description">{{ product.description }}</div> 
+    <div class="section-title lines"><h2>{{ 'products.product.details' | t }}</h2></div>
+    <div class="rte" itemprop="description">{{ product.description }}</div>
   </div>
 
   {% endif %}
@@ -154,7 +154,7 @@
 
   <div class="clear"></div>
 
-  {% if collection %} 
+  {% if collection %}
   <div id="product-navigation" class="desktop-12 tablet-6 mobile-3">
     <span class="backto">
       {{ 'products.product.back_to' | t }} {{ collection.title | link_to: collection.url }}
@@ -165,12 +165,12 @@
     <div id="back-forth">
       {% if collection.previous_product %}
       {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
-      <span class="prev-prod"> 
+      <span class="prev-prod">
         {{ 'products.product.previous_product_html' | t | link_to: prev_url }}
         <img id="previous-product-image" />
         {% endif %}
       </span>
-      {% if collection.next_product %} 
+      {% if collection.next_product %}
       {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
       <span class="next-prod">
         <img id="next-product-image" />
@@ -187,9 +187,9 @@
     jQuery.getJSON('{{ collection.previous_product | append: '.js' }}', function(product) {
                    jQuery('#previous-product-image').attr('src', product.images[0].replace(/(\.jpg|\.png|\.jpeg|\.gif)/, '_small$1'));
     });
-  </script>   
+  </script>
 
-  {% endif %}  
+  {% endif %}
 
 
 </div>

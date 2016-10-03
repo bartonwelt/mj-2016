@@ -1,0 +1,12 @@
+<div class="prod-image prod-disabled">
+  <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ image.alt }}" />
+</div>
+
+<div class="product-info prod-disabled">
+  <div class="product-info-inner">
+    <a href="{{ product.url | within: collection }}">
+      {% if settings.vendor %}<h4>{{ product.vendor }}</h4>{% endif %}
+      <h3>{{ product.title }}</h3>
+    </a>
+  </div>
+</div>

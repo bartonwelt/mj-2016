@@ -27,18 +27,22 @@
   <div id="full-width-filter" class="desktop-12 tablet-6 mobile-3">
     {% include 'filter' %}
   </div>
-  {% endif %}  
+  {% endif %}
   {% endif %}
 
   <div id="product-loop">
 
     {% for product in collection.products %}
     {% assign products-per-row = settings.products-per-row %}
-    <div id="product-listing-{{ product.id }}" class="product-index {% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-half" data-alpha="{{ product.title }}" data-price="{{ product.price }}">           
-      {% include 'product-listing' %}
+    <div id="product-listing-{{ product.id }}" class="product-index {% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-half" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+      {% if collection.handle == settings.retired-collection %}
+        {% include 'product-listing-retired' %}
+      {% else%}
+        {% include 'product-listing' %}
+      {% endif %}
     </div>
 
-    {% endfor %} 
+    {% endfor %}
 
   </div>
 </div>
@@ -47,5 +51,3 @@
 {% include 'pagination' %}
 
 {% endpaginate %}
-
-

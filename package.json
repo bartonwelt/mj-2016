@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Bart Welt",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-shopify-upload": "^2.0.0",
     "gulp-watch": "^4.3.5"
-  }
+  },
+  "private": true
 }

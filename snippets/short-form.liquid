@@ -32,80 +32,85 @@
     <label>{{ product.options.first }}:</label>{% for variant in product.variants %}<span class="it-is">{{ variant.option1 | escape }}</span>{% endfor %}
     {% endif %}
   </div>
-  <div class="product-variants"></div><!-- product variants -->  
-  <input  type="hidden" id="{{ variant.id }}" data-sku="{{ variant.sku }}" name="id" value="{{ product.variants[0].id }}" />    
+  <div class="product-variants"></div><!-- product variants -->
+  <input  type="hidden" id="{{ variant.id }}" data-sku="{{ variant.sku }}" name="id" value="{{ product.variants[0].id }}" />
   {% endif %}
 
-  {% if product.available %}  
+  {% if product.available %}
   <div class="product-add">
     {% if settings.product_quantity %}
     <div class="qty-selection">
-    <h5>{{ 'products.product.quantity' | t }}</h5> 
+    <h5>{{ 'products.product.quantity' | t }}</h5>
     <a class="down" field="quantity"><i class="icon-minus"></i></a>
     <input min="1" type="text" name="quantity" class="quantity" value="1" />
     <a class="up" field="quantity"><i class="icon-plus"></i></a>
     </div>
     {% endif %}
+    {% for collection in product.collections %}
+      {% if collection.handle == settings.freebie-collection %}<!-- product freebie snippet -->
+        {% include 'product-freebie' with product %}
+      {% endif %}
+    {% endfor %}
     <input type="submit" name="button" class="add" value="{{ 'products.product.add_to_cart' | t }}" />
   </div>
-  <p class="add-to-cart-msg"></p> 
+  <p class="add-to-cart-msg"></p>
   {% endif %}
-</form>    
+</form>
 
 
 <script>
   // Shopify Product form requirement
   selectCallback = function(variant, selector) {
-    var $product = $('#product-' + selector.product.id);    
-    
+    var $product = $('#product-' + selector.product.id);
+
     {% if template != 'product.quick' %}
     // BEGIN SWATCHES
     if (variant) {
       for (i=0;i<variant.options.length;i++) {
         jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').prop('checked', true);
-      }      
+      }
     }
     // END SWATCHES
     {% endif %}
-    
-    
+
+
     if (variant && variant.available == true) {
       if(variant.compare_at_price > variant.price){
-        $('.was', $product).html(Shopify.formatMoney(variant.compare_at_price, $('form', $product).data('money-format')))        
+        $('.was', $product).html(Shopify.formatMoney(variant.compare_at_price, $('form', $product).data('money-format')))
       } else {
         $('.was', $product).text('')
-      } 
-      $('.product-price', $product).html(Shopify.formatMoney(variant.price, $('form', $product).data('money-format'))) 
+      }
+      $('.product-price', $product).html(Shopify.formatMoney(variant.price, $('form', $product).data('money-format')))
       $('.add', $product).removeClass('disabled').removeAttr('disabled').val('{{ 'products.product.add_to_cart' | t }}');
     } else {
       var message = variant ? "{{ 'products.product.sold_out' | t }}" : "{{ 'products.product.sold_out' | t }}";
       $('.was', $product).text('')
       $('.product-price', $product).text(message);
-      $('.add', $product).addClass('disabled').attr('disabled', 'disabled').val(message); 
-    } 
-    
-    
-    
+      $('.add', $product).addClass('disabled').attr('disabled', 'disabled').val(message);
+    }
+
+
+
     if (variant && variant.featured_image) {
       var original_image = $("#{{ product.id }}"), new_image = variant.featured_image;
       Shopify.Image.switchImage(new_image, original_image[0], function (new_image_src, original_image, element) {
-        
+
         $(element).parents('a').attr('href', new_image_src);
-        $(element).attr('src', new_image_src);   
-        $(element).attr('data-image', new_image_src);   
+        $(element).attr('src', new_image_src);
+        $(element).attr('data-image', new_image_src);
         $(element).attr('data-zoom-image',new_image_src);
-		
+
         $('.thumbnail[data-image-id="' + variant.featured_image.id + '"]').trigger('click');
-             
+
       });
     }
-    
-  }; 
+
+  };
 </script>
 
 {% if product.variants.size > 1 or product.options.size > 1 %}
 <script type="text/javascript">
-  $(function() { 
+  $(function() {
     $product = $('#product-' + {{ product.id }});
     new Shopify.OptionSelectors("product-select-{{ product.id }}", { product: {{ product | json }}, onVariantSelected:
     selectCallback{% if template contains 'product'%}, enableHistoryState: true{% endif %} });
@@ -114,12 +119,12 @@
     jQuery('.swatch :radio').change(function() {
       var optionIndex = jQuery(this).parents('.swatch').attr('data-option-index');
       var optionValue = jQuery(this).val();
-      jQuery('#product-{{ product.id }} .single-option-selector').eq(optionIndex).find('option').filter(function() { return jQuery(this).text() == optionValue }).parent().val(optionValue).trigger('change');	   
-     }); 
+      jQuery('#product-{{ product.id }} .single-option-selector').eq(optionIndex).find('option').filter(function() { return jQuery(this).text() == optionValue }).parent().val(optionValue).trigger('change');
+     });
      {% endif %}
-        
-       
-   });       
+
+
+   });
 </script>
 {% endif %}
 
