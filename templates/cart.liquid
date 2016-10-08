@@ -41,6 +41,7 @@
               {% if property_size > 0 %}
               {% for p in item.properties %}
               {% unless p.last == blank %}
+              <span class='cart-line-item'>
               {{ p.first }}:
 
               {% comment %}
@@ -51,7 +52,7 @@
               {% else %}
               {{ p.last }}
               {% endif %}
-
+              </span>
               <br>
               {% endunless %}
               {% endfor %}
@@ -60,10 +61,10 @@
             </div>
           </td>
           <td class="cart-price">
-            {{ item.price | money }}{% if item.variant.compare_at_price > item.price %}&nbsp;<del>{{ item.variant.compare_at_price | money }}</del>{% endif %}          
+            {{ item.price | money }}{% if item.variant.compare_at_price > item.price %}&nbsp;<del>{{ item.variant.compare_at_price | money }}</del>{% endif %}
           </td>
           <td class="cart-quantity">
-            <input type="text" class="cart-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>    
+            <input type="text" class="cart-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
           </td>
           <td class="cart-remove">
             <a href="#" onclick="remove_item({{ item.variant.id }}); return false;"><i class="icon-trash icon-2x"></i></a>
@@ -78,27 +79,27 @@
 
     <div id="cart-notes" class="desktop-9 tablet-6 mobile-3">
       <label for="note"><strong>{{ 'cart.general.note' | t }}</strong></label>
-      <textarea name="note" id="note" rows="5" cols="60">{{cart.note}}</textarea>  
-    </div> 
+      <textarea name="note" id="note" rows="5" cols="60">{{cart.note}}</textarea>
+    </div>
 
     <div id="basket-right" class="desktop-3 tablet-6 mobile-3">
       <h4>{{ 'cart.general.subtotal' | t }} {{ cart.total_price | money }}</h4>
       <p><a href="/collections">{{ 'cart.general.continue' | t }}</a></p>
       <input type="submit" name="update" id="update-cart" value="{{ 'cart.general.update' | t }}" class="button" />
       <input type="submit" name="checkout" id="checkout" value="{{ 'cart.general.checkout' | t }}" class="button" />
-      
+
       {% for type in shop.enabled_payment_types %}
       <img src="{{ type | payment_type_img_url }}" />
-      {% endfor %} 
-      
+      {% endfor %}
+
       <div class="clear"></div>
-      
-      {% if additional_checkout_buttons %} 
-      {{ content_for_additional_checkout_buttons }} 
+
+      {% if additional_checkout_buttons %}
+      {{ content_for_additional_checkout_buttons }}
       {% endif %}
-      
+
       <div class="clear"></div>
- 
+
     </div>
 
   </form>
@@ -109,4 +110,3 @@
   </div>
 
 </div>
-
