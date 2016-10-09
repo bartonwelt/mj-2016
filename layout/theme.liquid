@@ -351,10 +351,7 @@
 
       <div class="credit desktop-12 tablet-6 mobile-3">
         <p>
-          {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }} •
-          <a href="//www.shopifythemes.net" target="_blank" title="Shopify theme">Shopify Theme</a>
-          {{ 'layout.footer.theme_title' | t }} Underground Media • 
-          {{ powered_by_link | replace: '" target', '?ref=undergroundmedia" target' }}
+          {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}
         </p>
 
         {% for type in shop.enabled_payment_types %}
