@@ -1,10 +1,10 @@
 <div>
-  <h5>Choose a Free Mud Jug™ or Roadie</h5>
-  <select required id="freebie-select" name="properties[Free Basic]" class="prod-property" data-error="Please select a freebie.">
-    <option value="" selected>Choose Your Freebie</option>
+  <h5>{{ 'products.freebie.heading' | t }}</h5>
+  <select required id="freebie-select" name="properties[Free Basic]" class="prod-property" data-error="{{ 'products.freebie.error' | t }}">
+    <option value="" selected>{{ 'products.freebie.choose' | t }}</option>
     {% for product in collections[settings.freebie-addon-collection].products %}
     <option value="{{ product.title }}">{{ product.title }}</option>
     {% endfor %}
-    <option value="Donate to the U.S. Military">Donate to the U.S. Military</option>
+    <option value="{{ 'products.freebie.donate' | t }}">{{ 'products.freebie.donate' | t }}</option>
   </select>
 </div>

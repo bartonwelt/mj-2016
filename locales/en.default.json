@@ -285,6 +285,17 @@
       "popup_question": "CONTACT US",
       "add_to_cart_success_link": "View Cart and Check out!",
       "add_to_cart_success_html": "Item Added {{ link }}"
+    },
+    "bundle": {
+      "heading": "Create Your Mud Jug {{ count }}-Pack",
+      "choose": "Choose One",
+      "error": "Please select a bundle item."
+    },
+    "freebie": {
+      "heading": "Choose a Free Mud Jug™ or Roadie",
+      "error": "Please select a freebie.",
+      "choose": "Choose One",
+      "donate": "Donate to the U.S. Military"
     }
   },
   "gift_cards": {
