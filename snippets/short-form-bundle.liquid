@@ -46,11 +46,7 @@
     <a class="up" field="quantity"><i class="icon-plus"></i></a>
     </div>
     {% endif %}
-    {% for collection in product.collections %}
-      {% if collection.handle == settings.freebie-collection %}<!-- product freebie snippet -->
-        {% include 'product-freebie' %}
-      {% endif %}
-    {% endfor %}
+    {% include 'product-bundle' %}
     <input type="submit" name="button" class="add" value="{{ 'products.product.add_to_cart' | t }}" />
   </div>
   <p class="add-to-cart-msg"></p>

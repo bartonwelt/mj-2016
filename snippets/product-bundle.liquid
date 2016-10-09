@@ -1,0 +1,15 @@
+{% assign bundle = product.metafields.bundle %}
+
+<div>
+  <h5>Create Your Mud Jug {{ bundle.count }}-Pack</h5>
+  <p>
+    {% for i in (1..bundle.count) %}
+    <select required id="bundle-{{i}}" name="properties[Bundle Item #{{i}}]" class="prod-property" data-error="Please select a bundle item.">
+      <option value="">Choose One</option>
+      {% for product in collections[bundle.collection].products %}
+      <option value="{{ product.title }}">{{ product.title }}</option>
+      {% endfor %}
+    </select>
+    {% endfor %}
+  </p>
+</div>
