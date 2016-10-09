@@ -5,12 +5,12 @@
 body {
   color: {{ settings.text_color }};
   background: {{ settings.background }}{% if settings.bg != "no_bg" %} url({{ 'background.jpg' | asset_url }}) {% endif %};
-  {% if settings.bg != "no_bg" %}  
+  {% if settings.bg != "no_bg" %}
   background-position: {{ settings.background-position }};
-  background-repeat: {{ settings.background-repeat }}; 
-  {% endif %}  font-size: {{ settings.font-size }}; 
-  font-family:{{ settings.font }};	
-  line-height: 1.6em; 
+  background-repeat: {{ settings.background-repeat }};
+  {% endif %}  font-size: {{ settings.font-size }};
+  font-family:{{ settings.font }};
+  line-height: 1.6em;
   -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
   margin: 0! important;
 }
@@ -27,13 +27,13 @@ a:hover {
 }
 
 h3 {
-  color:#303030!important; 
+  color:#303030!important;
 }
 
 h3.plisthead {
   font-size:18px;
   line-height:24px;
-  
+
 }
 
 #container {
@@ -51,7 +51,7 @@ h3.plisthead {
 #main {
   width:924px;
   padding:0 8px;
-  border-top: 3px double #eee; 
+  border-top: 3px double #eee;
   background: {{ settings.background }};
 }
 
@@ -84,7 +84,7 @@ h3.plisthead {
   padding:0;
   background:none;
   border-bottom:3px double {{ settings.dotted_color }};
-}   
+}
 
 #overview .hint {
   font-size:14px;
@@ -124,11 +124,11 @@ h3.plisthead {
 #steps {
   margin-top:8px;
   display:block;
-  font-family: {{ settings.font }}! important; 
-  font-style: normal;  
+  font-family: {{ settings.font }}! important;
+  font-style: normal;
 }
 
-#thumbs div { 
+#thumbs div {
   border:none;
   margin-right:6px;
 }
@@ -145,12 +145,12 @@ h3.plisthead {
   line-height:24px;
 }
 
-#thumbs td { 
+#thumbs td {
   display:block;
   width:460px;
   padding-bottom:40px;
   padding-right:20px;
-  vertical-align:top; 
+  vertical-align:top;
 }
 
 .plist-variant-title, .plist-line-price {
@@ -193,7 +193,7 @@ span.sign-in-message {
   font-size:12px;
   font-weight:400;
   margin-top: 10px;
-}	
+}
 span.sign-in-message a {
   text-decoration:none;
   font-weight:600;
@@ -218,7 +218,7 @@ input#billing_address_province, input#shipping_address_province {
   padding:8px 12px;
   color:#303030;
   -webkit-appearance:none;
-  font-family:{{ settings.font }}! important;	
+  font-family:{{ settings.font }}! important;
   font-size: 13px! important;
 }
 
@@ -266,7 +266,7 @@ input#billing_address_province, input#shipping_address_province {
 }
 
 .group h3, .pgroup h3 {
-  
+
   font-weight:400;
   text-transform:uppercase;
   letter-spacing:0.1em;
@@ -343,7 +343,7 @@ input#billing_address_province, input#shipping_address_province {
   border-top:none;
   border-bottom:none;
   padding:29px 0 0 0;
-}        	
+}
 
 input#commit-button, input#complete-purchase, #create-account-btn, #discounts-body input[type=submit] {
   border:none;
@@ -357,7 +357,7 @@ input#commit-button, input#complete-purchase, #create-account-btn, #discounts-bo
   height:40px;
   background:#000;
   color: #fff;
-  font-family:{{ settings.font }}! important;	
+  font-family:{{ settings.font }}! important;
   font-weight: normal! important;
   font-size: 13px! important;
 }
@@ -367,7 +367,7 @@ input#commit-button, input#complete-purchase, #create-account-btn, #discounts-bo
   height:40px;
   background:#000;
   color: #fff;
-  font-family:{{ settings.font }}! important;	
+  font-family:{{ settings.font }}! important;
   font-weight: normal! important;
   font-size: 13px! important;
 }
@@ -464,7 +464,7 @@ span.hint a {
 span.hint a:hover { }
 
 div.sst {
-  margin-top:33px; 
+  margin-top:33px;
 }
 
 #marketing-box {
@@ -528,8 +528,8 @@ div.sst {
   -webkit-font-smoothing:antialiased;
 }
 
-#cost, #order-num { 
-  text-shadow: none !important; 
+#cost, #order-num {
+  text-shadow: none !important;
   color:#303030!important;
   font-family: {{ settings.font }}! important;
   color: {{ settings.text_color }}! important;

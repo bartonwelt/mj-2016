@@ -75,9 +75,12 @@
       </tbody>
     </table>
 
-    <div id="cart-notes" class="desktop-9 tablet-6 mobile-3">
-      <label for="note"><strong>{{ 'cart.general.note' | t }}</strong></label>
-      <textarea name="note" id="note" rows="5" cols="60">{{cart.note}}</textarea>
+    <div class="desktop-9 tablet-6 mobile-3">
+      {% include 'hear-about-mudjug' %}
+      <div id="cart-notes">
+        <label for="note"><strong>{{ 'cart.general.note' | t }}</strong></label>
+        <textarea name="note" id="note" rows="5" cols="60">{{cart.note}}</textarea>
+      </div>
     </div>
 
     <div id="basket-right" class="desktop-3 tablet-6 mobile-3">

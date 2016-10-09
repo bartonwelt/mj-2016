@@ -1,0 +1,11 @@
+{% assign hear_about_mudjug = settings.hear_about_mj | replace: ' ,', ',' | split: ',' %}
+
+<p class="cart-attribute__field">
+  <label for="hear-about-mudjug">{{ 'cart.general.hear_about_title' | t }}</label>
+  <select required class="required" id="hear-about-mudjug" name="attributes[How Customer Heard About Us]" data-error="{{ 'cart.general.hear_about_error' | t }}">
+    <option value="">{{ 'cart.general.hear_about_choose' | t }}</option>
+    {% for mj_option in hear_about_mudjug) %}
+      <option value="{{ mj_option }}" {% if cart.attributes['How Customer Heard About Us'] == mj_option %} selected{% endif %}>{{ mj_option }}</option>
+    {% endfor %}
+  </select>
+</p>

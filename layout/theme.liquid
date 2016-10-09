@@ -486,5 +486,8 @@
   {% include 'social-meta-tags' %}
   {% include 'currencies' %}
 
+  <!-- Validate cart attributes on checkout -->
+  {{ 'cart-attributes.js' | asset_url | script_tag }}
+
 </body>
 </html>

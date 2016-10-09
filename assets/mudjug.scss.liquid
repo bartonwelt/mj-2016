@@ -20,18 +20,6 @@ body {
   padding-top: 3.125rem;
 }
 
-#collection-description {
-  padding-bottom: 2rem;
-}
-
-.homepage-section{
-  padding-bottom: 2rem;
-}
-
-.prod-disabled {
-  opacity: 0.5;
-}
-
 /* Typography
 ---------------------------- */
 
@@ -58,11 +46,25 @@ p {
   }
 }
 
-/* Forms
+/* Homepage
 ---------------------------- */
+.homepage-section{
+  padding-bottom: 2rem;
+}
+
+/* Products
+---------------------------- */
+#collection-description {
+  padding-bottom: 2rem;
+}
+
 .prod-property {
   margin-left: auto;
   margin-right: auto;
+}
+
+.prod-disabled {
+  opacity: 0.5;
 }
 
 input.error, select.error, textarea.error {
@@ -83,9 +85,29 @@ input.error, select.error, textarea.error {
   font-style: italic;
 }
 
+#looked-at {
+  margin-top: 2rem;
+}
+
 /* Media Queries
 ---------------------------- */
 
+/* Mobile only */
+@media screen and(max-width: 46.25rem) {
+  nav {
+    border: 0;
+  }
+
+  #cartform select {
+    width: 100%;
+  }
+
+  .cart-price del {
+    display: none;
+  }
+}
+
+/* Tablet and above */
 @media screen and(min-width: 33.9rem) {
   #logo {
     a {
@@ -93,5 +115,12 @@ input.error, select.error, textarea.error {
         max-width: 200px;
       }
     }
+  }
+}
+
+/* Desktop */
+@media screen and(min-width: 61.25rem) {
+  #logo {
+    margin-top: -1rem;
   }
 }

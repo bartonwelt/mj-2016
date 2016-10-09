@@ -4326,6 +4326,11 @@
         "label":"Make slideshow full width"
       },
       {
+        "type":"checkbox",
+        "id":"display-fixed-bg",
+        "label":"Make slideshow fixed with full-width color background"
+      },
+      {
         "type":"select",
         "id":"homepage-display",
         "label":"Show video or slideshow",
@@ -4405,6 +4410,12 @@
         "info":"1920 x 800px recommended"
       },
       {
+        "type":"color",
+        "id":"slide-1-background",
+        "label":"First slide background",
+        "default":"#fff"
+      },
+      {
         "type":"text",
         "id":"slide1_url",
         "label":"First image link",
@@ -4480,6 +4491,12 @@
         "info":"1920 x 800px recommended"
       },
       {
+        "type":"color",
+        "id":"slide-2-background",
+        "label":"Second slide background",
+        "default":"#fff"
+      },
+      {
         "type":"text",
         "id":"slide2_url",
         "label":"Second image link",
@@ -4551,9 +4568,15 @@
       {
         "type":"image",
         "id":"slide3.jpg",
-        "label":"third image",
+        "label":"Third image",
         "max-width":1920,
         "info":"1920 x 800px recommended"
+      },
+      {
+        "type":"color",
+        "id":"slide-3-background",
+        "label":"Third slide background",
+        "default":"#fff"
       },
       {
         "type":"text",
@@ -4633,6 +4656,12 @@
         "info":"1920 x 800px recommended"
       },
       {
+        "type":"color",
+        "id":"slide-4-background",
+        "label":"Fourth slide background",
+        "default":"#fff"
+      },
+      {
         "type":"text",
         "id":"slide4_url",
         "label":"Fourth image link",
@@ -4705,9 +4734,15 @@
       {
         "type":"image",
         "id":"slide5.jpg",
-        "label":"fifth image",
+        "label":"Fifth image",
         "max-width":1920,
         "info":"1920 x 800px recommended"
+      },
+      {
+        "type":"color",
+        "id":"slide-5-background",
+        "label":"Fifth slide background",
+        "default":"#fff"
       },
       {
         "type":"text",
@@ -6453,6 +6488,25 @@
       {
         "type":"paragraph",
         "content":"* For this functionality to work in your shop, you are required to edit your money formats as per [these instructions](http:\/\/wiki.shopify.com\/Do_Tell_Where_The_Money_Is) (â€œDo tell where the money isâ€)."
+      }
+    ]
+  },
+  {
+    "name":"Cart",
+    "settings":[
+      {
+        "type":"header",
+        "content":"Referral Dropdown"
+      },
+      {
+        "type":"paragraph",
+        "content":"A dropdown list on the cart page with a list of options for how a customer has heard about you. These must be comma separated."
+      },
+      {
+        "type":"textarea",
+        "id":"hear_about_mj",
+        "label":"Dropdown options",
+        "info":"Enter each option on a separate line."
       }
     ]
   }
