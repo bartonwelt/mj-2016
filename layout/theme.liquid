@@ -191,9 +191,20 @@
 
         <ul id="cart" class="{% if settings.enable-hello %}desktop-4 {% else %}desktop-6{% endif %} tablet-6 mobile-3">
 
-          <li><a href="{{ shop.url }}"><i class="icon-home icon-2x"></i></a>
+          {% if settings.preheader_text %}
+            <li class="preheader-text">
+              {% if settings.show_preheader_icon %}
+              <img class="preheader-icon" src="{{ 'american-flag.png' | asset_url }}" alt="{{ settings.preheader_text }}" style="border: 0;"/>
+              {% endif %}
+              {{ settings.preheader_text }}
+            </li>
+          {% endif %}
+          {% if settings.preheader_phone %}<li>{{ settings.preheader_phone }}</li>{% endif %}
+          {% if settings.enable-home %}<li><a href="{{ shop.url }}"><i class="icon-home icon-2x"></i></a>{% endif %}
+          {% if settings.enable-search %}
           <li class="seeks"><a id="inline" href="#search_popup" class="open_popup"><i class="icon-search icon-2x"></i></a></li>
           <li class="seeks-mobile"><a href="/search"><i class="icon-search icon-2x"></i></a></li>
+          {% endif %}
           {% if shop.customer_accounts_enabled %}
           {% if customer  %}
           <li class="cust"><a href="/account"><i class="icon-user icon-2x"></i></a></li>

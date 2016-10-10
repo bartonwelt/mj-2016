@@ -20,6 +20,20 @@ body {
   padding-top: 3.125rem;
 }
 
+ul#cart {
+  .preheader-icon {
+    margin-right: 3px;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+  }
+
+  .preheader-text {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+  }
+}
+
 /* Typography
 ---------------------------- */
 
@@ -119,6 +133,12 @@ input.error, select.error, textarea.error {
 
 /* Mobile only */
 @media screen and(max-width: 46.25rem) {
+  ul#cart {
+    .preheader-text {
+      display: none;
+    }
+  }
+
   nav {
     border: 0;
   }
@@ -159,7 +179,4 @@ input.error, select.error, textarea.error {
 
 /* Desktop */
 @media screen and(min-width: 61.25rem) {
-  #logo {
-    margin-top: -1rem;
-  }
 }

@@ -97,6 +97,44 @@
         "id":"hello",
         "label":"Text",
         "info":"Use basic HTML to format text"
+      },
+      {
+        "type":"header",
+        "content":"Pre-Header"
+      },
+      {
+        "type":"checkbox",
+        "id":"enable-home",
+        "label":"Show home icon"
+      },
+      {
+        "type":"checkbox",
+        "id":"enable-search",
+        "label":"Show search icon"
+      },
+      {
+        "type":"checkbox",
+        "id":"show_preheader_icon",
+        "label":"Show preheader icon"
+      },
+      {
+        "type":"image",
+        "id":"american-flag.png",
+        "label":"Pre-header icon",
+        "max-width":64,
+        "info":"64 x 64px .png"
+      },
+      {
+        "type":"text",
+        "id":"preheader_text",
+        "label":"Pre-header text string",
+        "info":"Use basic HTML to format text"
+      },
+      {
+        "type":"text",
+        "id":"preheader_phone",
+        "label":"Phone number",
+        "info":"Use basic HTML to format text"
       }
     ]
   },
