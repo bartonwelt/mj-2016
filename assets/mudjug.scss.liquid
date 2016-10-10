@@ -57,7 +57,7 @@ p {
     .slideshow-fixed-bg {
       img {
         margin: 0 auto;
-        max-height: 25rem;
+        max-height: 500px;
         width: auto;
       }
     }
@@ -116,6 +116,20 @@ input.error, select.error, textarea.error {
 
   .cart-price del {
     display: none;
+  }
+
+  .flexslider {
+    .slides {
+      .slideshow-fixed-bg {
+        .row {
+          width: 100%;
+          > div {
+            margin: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
 
