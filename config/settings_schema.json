@@ -6438,8 +6438,14 @@
         "default":true
       },
       {
+        "type":"checkbox",
+        "id":"show_payment_types",
+        "label":"Show payment type logos",
+        "default":true
+      },
+      {
         "type":"header",
-        "content":"menus"
+        "content":"Menus"
       },
       {
         "type":"link_list",

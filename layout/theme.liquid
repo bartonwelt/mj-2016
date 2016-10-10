@@ -354,9 +354,11 @@
           {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}
         </p>
 
-        {% for type in shop.enabled_payment_types %}
-        <img src="{{ type | payment_type_img_url }}" />
-        {% endfor %}
+        {% if settings.show_payment_types %}
+          {% for type in shop.enabled_payment_types %}
+          <img src="{{ type | payment_type_img_url }}" />
+          {% endfor %}
+        {% endif %}
 
       </div>
     </div>
