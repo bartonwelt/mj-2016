@@ -6450,8 +6450,8 @@
         "type":"image",
         "id":"popup-image.jpg",
         "label":"Email Popup image",
-        "max-width":480,
-        "info":"Upload an email signup popup image. Max width 480px. For best results, use landscape orientation."
+        "max-width":960,
+        "info":"Upload an email signup popup image. Max width 480px (960px retina). For best results, use landscape orientation."
       },
       {
         "type":"text",
