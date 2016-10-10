@@ -37,7 +37,7 @@
 
     {% for link in linklists[settings.home-collection-linklist].links %}
     {% assign collection = link.object %}
-    <div class="collection-index desktop-3 tablet-half mobile-half{% cycle ' first', '', '', ' last' %}" data-alpha="{{ collection.title }}">  
+    <div class="collection-index desktop-3 tablet-half mobile-half{% cycle ' first', '', '', ' last' %}" data-alpha="{{ collection.title }}">
       <div class="collection-image">
         <a href="{{ collection.url }}" title="{{ collection_title }}">
           {% if collection.image %}
@@ -45,9 +45,9 @@
           {% else %}
           {{ collection.products.first.featured_image | product_img_url: 'grande' | img_tag: collection_title }}
           {% endif %}
-        </a>     
+        </a>
       </div>
-      <div class="collection-info">
+      <div class="collection-info collection-info-{{ settings.homepage-collect-align }}">
         <a href="{{ collection.url }}" title="{{ collection.title }}">
           <h3>{{ collection.title }}</h3>
           {% if settings.collection_count %}<p>{{ 'collections.general.items_count' | t: count: collection.products_count }}</p>{% endif %}

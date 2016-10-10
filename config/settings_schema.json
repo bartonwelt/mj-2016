@@ -4820,6 +4820,21 @@
         "type":"link_list",
         "id":"home-collection-linklist",
         "label":"Choose collection list to display"
+      },
+      {
+        "type":"select",
+        "id":"homepage-collect-align",
+        "label":"Collection title alignment",
+        "options":[
+          {
+            "value":"center",
+            "label":"Center"
+          },
+          {
+            "value":"bottom",
+            "label":"Bottom"
+          }
+        ]
       }
     ]
   },
