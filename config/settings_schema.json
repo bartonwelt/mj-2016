@@ -6204,6 +6204,31 @@
       },
       {
         "type":"header",
+        "content":"Product description"
+      },
+      {
+        "type":"select",
+        "id":"product_description_align",
+        "label":"Description alignment",
+        "options":[
+          {
+            "value":"left",
+            "label":"Left"
+          },
+          {
+            "value":"center",
+            "label":"Center"
+          }
+        ]
+      },
+      {
+        "type":"checkbox",
+        "id":"show_product_social",
+        "label":"Show social icons",
+        "default":true
+      },
+      {
+        "type":"header",
         "content":"Additional info popups"
       },
       {

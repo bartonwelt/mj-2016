@@ -110,13 +110,15 @@
       {% include 'short-form' %}
 
         {% if settings.product-description == 'right' %}
-        <div class="rte" itemprop="description">{{ product.description }}</div>
+        <div class="rte text-{{ settings.product_description_align }}" itemprop="description">{{ product.description }}</div>
         {% endif %}
 
       </div>
+      {% if settings.show_product_social %}
       <div class="desc">
         {% include 'social' with product %}
       </div>
+      {% endif %}
     </div>
 
     {% if settings.popups %}
