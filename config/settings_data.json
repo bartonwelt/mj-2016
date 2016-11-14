@@ -2013,7 +2013,7 @@
     "show_rss": false,
     "popup": true,
     "email_popup_image": true,
-    "mailchimp": "Your Mailchimp List URL",
+    "mailchimp": "http:\/\/mudjug.us6.list-manage.com\/subscribe\/post?u=a2808e594c451d346849f9930&id=77233c8a12",
     "footer_signup_text": "Join our Mailing List",
     "bottom_logo": false,
     "show_payment_types": false,
