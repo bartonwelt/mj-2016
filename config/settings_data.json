@@ -2020,9 +2020,9 @@
     "footer-2-links": "customer-service",
     "footer-3-links": "resources",
     "show_multiple_currencies": false,
-    "currency_format": "money_with_currency_format",
-    "supported_currencies": "USD EUR CAD AUD SGD",
-    "default_currency": "GBP",
+    "currency_format": "money_format",
+    "supported_currencies": "USD",
+    "default_currency": "USD",
     "hear_about_mj": "Search Engine, Friend, Facebook, Twitter, Instagram, Youtube, Jawga Boyz, Redneck Nation, NASCAR, Truck-Thorsport \/ Johnny Sauter, Tobacco Store, Mud Jug Sticker, Earl Dibbles Jr., MBest11x\/Article 15, The Hot Dog Shoppe, Northerner.com, Donald \"Cowboy\" Cerrone - UFC, Confederatecamo.com, Tumblr, UPCHURCH The Redneck, Mudjug1, Chrisdips1, Outlawdipper",
     "checkout_use_header_image": true,
     "checkout_header_image": "shopify:\/\/shop_images\/checkout_header_image_2.jpg",
@@ -2290,6 +2290,9 @@
     "pages-right": "about-this-theme",
     "quick-view": true,
     "homepage_sections": "1,2,5,10,4",
-    "show_decimal_places": false
+    "show_decimal_places": false,
+    "content_for_index": [
+
+    ]
   }
 }

@@ -1,0 +1,11 @@
+{% assign theme = product.metafields.theme %}
+
+<form data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
+  {% if product.available %}
+  <div class="product-add">
+    <a class="buy-now-link" href="{{ theme.link }}" target="_blank">
+      <input type="button" name="button" value="{{ 'products.product.buy_now' | t }}" />
+    </a>
+  </div>
+  {% endif %}
+</form>
