@@ -93,19 +93,15 @@
       {% if settings.subtitle %}<p>{{ page_title }}</p>{% endif %}
 	  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <p id="product-price">
-        {% if product.available %}
         {% if product.compare_at_price > product.price %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
         {% else %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>
         {% endif %}
-        {% else %}
-        <span class="product-price" itemprop="price">{{ 'products.product.sold_out' | t }}</span>
-        {% endif %}
       </p>
 
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+        <link itemprop="availability" href="http://schema.org/InStock">
 
         {% include 'short-form-external' %}
 

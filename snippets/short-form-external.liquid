@@ -1,11 +1,9 @@
-{% assign product = product.metafields.product %}
+{% assign metafield = product.metafields %}
 
-<form data-money-format="{{ shop.money_format }}" id="product-form-{{ product.id }}">
-  {% if product.available %}
+<form id="product-form-{{ product.id }}">
   <div class="product-add">
-    <a class="buy-now-link" href="{{ product.link }}" target="_blank">
+    <a class="buy-now-link" href="{{ metafield.product.link }}" target="_blank">
       <input type="button" name="button" value="{{ 'products.product.buy_now' | t }}" />
     </a>
   </div>
-  {% endif %}
 </form>
