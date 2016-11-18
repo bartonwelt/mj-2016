@@ -1,3 +1,9 @@
+{% for collection in product.collections %}
+  {% if collection.handle == settings.retired-collection %}
+    {% assign is_retired = true %}
+  {% endif %}
+{% endfor %}
+
 <div itemscope itemtype="http://schema.org/Product" id="product-{{ product.id }}">
 
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
@@ -93,6 +99,7 @@
       {% if settings.subtitle %}<p>{{ page_title }}</p>{% endif %}
 	  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <p id="product-price">
+        {% unless is_retired %}
         {% if product.available %}
         {% if product.compare_at_price > product.price %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
@@ -102,12 +109,17 @@
         {% else %}
         <span class="product-price" itemprop="price">{{ 'products.product.sold_out' | t }}</span>
         {% endif %}
+        {% else %}
+        <span class="product-price" itemprop="price">{{ 'products.product.retired' | t }}</span>
+        {% endunless %}
       </p>
 
+        {% unless is_retired %}
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
-      {% include 'short-form' %}
+        {% include 'short-form' %}
+        {% endunless %}
 
         {% if settings.product-description == 'right' %}
         <div class="rte text-{{ settings.product_description_align }}" itemprop="description">{{ product.description }}</div>
