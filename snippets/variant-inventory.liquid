@@ -1,0 +1,5 @@
+<span id="variant-inventory">
+{% if product.variants.first.inventory_management == "shopify" and product.variants.first.inventory_quantity > 0 %}
+&bull; {{ product.variants.first.inventory_quantity }} {{ 'products.product.in_stock' | t }}
+{% endif %}
+</span>

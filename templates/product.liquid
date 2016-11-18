@@ -103,8 +103,10 @@
         {% if product.available %}
         {% if product.compare_at_price > product.price %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
+        {% include 'variant-inventory' %}
         {% else %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>
+        {% include 'variant-inventory' %}
         {% endif %}
         {% else %}
         <span class="product-price" itemprop="price">{{ 'products.product.sold_out' | t }}</span>
