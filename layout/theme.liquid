@@ -129,7 +129,7 @@
 <body class="gridlock {% if template contains 'collection' %}collection{% else %} {{ template }}{% endif %}">
 
   <div id="dl-menu" class="dl-menuwrapper">
-    <button class="dl-trigger"><i class="icon-align-justify"></i></button>
+    <button class="dl-trigger"><i class="icon-align-justify"></i><span>{{ 'layout.header.mobile_menu' | t }}</span></button>
     <ul class="dl-menu">
 
       {% for link in linklists.main-menu.links %}

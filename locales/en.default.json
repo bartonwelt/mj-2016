@@ -7,7 +7,7 @@
       "enter": "Enter",
       "email_address": "Email Address",
       "submit": "Submit",
-      "powered": "This Store will be powered by"
+      "powered": "by"
     }
   },
   "general": {
@@ -27,7 +27,7 @@
     },
     "newsletter_form": {
       "newsletter_email": "Enter Email Address",
-      "submit": "Join"
+      "submit": "Sign Up"
     },
     "search": {
       "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
@@ -239,11 +239,12 @@
   "layout": {
     "header": {
       "my_cart": "MY CART",
-      "logout": "LOGOUT"
+      "logout": "LOGOUT",
+      "mobile_menu": "MENU"
     },
     "footer": {
-      "navigation": "Navigation",
-      "connect": "Connect",
+      "navigation": "About Mudjug ",
+      "connect": "Contact Us",
       "copyright": "Copyright",
       "theme_title": "by"
     },
@@ -253,7 +254,7 @@
       "instagram": "Follow",
       "instagram_follow_where": "On Instagram",
       "mailing_list_join": "Join our Mailing List",
-      "mailing_list_text": "Sign up to receive our email updates"
+      "mailing_list_text": "Sign up for the Mudjug Email List today!"
     }
   },
   "products": {
@@ -264,7 +265,7 @@
       "quick_view": "QUICK VIEW",
       "from": "From",
       "view_full": "View Full Details",
-      "related": "More in this Collection"
+      "related": "More from Mudjug"
     },
     "product": {
       "details": "Details",
