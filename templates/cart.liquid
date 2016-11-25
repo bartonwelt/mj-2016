@@ -7,8 +7,8 @@
 
   {% else %}
   <script type="text/javascript">
-    function remove_item(id) {
-      document.getElementById('updates_'+id).value = 0;
+    function remove_item(index) {
+      document.getElementById('updates_'+index).value = 0;
       document.getElementById('cartform').submit();
     }
   </script>
@@ -62,10 +62,10 @@
             {{ item.price | money }}{% if item.variant.compare_at_price > item.price %}&nbsp;<del>{{ item.variant.compare_at_price | money }}</del>{% endif %}
           </td>
           <td class="cart-quantity">
-            <input type="text" class="cart-qty" size="4" name="updates[{{ item.id }}]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();"/>
+            <input type="text" class="cart-qty" size="4" name="updates[]" id="updates_{{ forloop.index }}" value="{{ item.quantity }}" onfocus="this.select();"/>
           </td>
           <td class="cart-remove">
-            <a href="#" onclick="remove_item({{ item.variant.id }}); return false;"><i class="icon-trash icon-2x"></i></a>
+            <a href="#" onclick="remove_item({{ forloop.index }}); return false;"><i class="icon-trash icon-2x"></i></a>
           </td>
           <td class="cart-total">
             {{ item.line_price | money }}

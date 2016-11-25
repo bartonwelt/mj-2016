@@ -163,11 +163,11 @@ Shopify.api = function() {
         }
       })
     },
-    changeItem: function(variant_id, quantity, callback) {
+    changeItem: function(variant_index, quantity, callback) {
       var params = {
         type: "POST",
         url: "/cart/change.js",
-        data: "quantity=" + quantity + "&id=" + variant_id,
+        data: "quantity=" + quantity + "&line=" + variant_index,
         dataType: "json",
         success: function(cart) {
           if((typeof callback) === "function") {
@@ -182,11 +182,11 @@ Shopify.api = function() {
       };
       $.ajax(params)
     },
-    removeItem: function(variant_id, callback) {
+    removeItem: function(variant_index, callback) {
       var params = {
         type: "POST",
         url: "/cart/change.js",
-        data: "quantity=0&amp;id=" + variant_id,
+        data: "quantity=0&amp;line=" + variant_index,
         dataType: "json",
         success: function(cart) {
           if((typeof callback) === "function") {

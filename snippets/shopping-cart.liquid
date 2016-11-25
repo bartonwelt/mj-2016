@@ -16,12 +16,12 @@
       {% endfor %}
       {% if found == false %}
       <img src="{{ item | img_url: 'small' }}"  alt="{{ item.title | escape }}" />
-      {% endif %}           
+      {% endif %}
     </a>
   </div>
   <div class="quick-cart-details">
     <p><a href="{{ item.url }}">{{ item.title }}</a></p>
-      <p>{{ item.price | money }}</p>        
+    <p>{{ item.price | money }}</p>        
     <a class="remove_item" href="#" data-id="{{ item.variant.id }}">{{ 'cart.general.remove' | t }}</a>
   </div>
 </div>
