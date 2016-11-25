@@ -19,7 +19,7 @@
 
 // Including jQuery conditionnally.
 if (typeof jQuery === 'undefined') {
-  document.write({{ "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" | script_tag | json }});
+  document.write({{ "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" | script_tag | json }});
   document.write('<script type="text/javascript">jQuery.noConflict();<\/script>');
 }
 
@@ -31,7 +31,7 @@ if (typeof Shopify.resizeImage === 'undefined') {
 //]]>
 </script>
 
-{{ 'http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
 {{ 'jquery.products.min.js' | asset_url | script_tag }}
 
 <script type="text/javascript" charset="utf-8">
@@ -41,4 +41,3 @@ Shopify.Products.showRecentlyViewed( { howManyToShow:6 } );
 
 //]]>
 </script>
-

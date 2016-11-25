@@ -150,9 +150,13 @@
 
   <div class="clear"></div>
 
+  {% comment %}
   {% if collection %}
   {% include 'related-products' %}
   {% endif %}
+  {% endcomment %}
+
+  {% include 'cross-sell-custom' %}
 
   <div class="clear"></div>
 
