@@ -7,21 +7,21 @@
     <div class="bigimage desktop-10">
       <img id="{{ product.id }}" src="{{ featured_image | img_url: 'large' }}" data-image-id="{{ image.id }}" data-zoom-image="{{ featured_image | img_url: 'master' }}" alt='{{ image.alt }}' title="{{ product.title }}"/>
     </div>
-    <div id="{{ product.id }}-gallery">	
+    <div id="{{ product.id }}-gallery">
       {% for image in product.images %}
       <a href="#" data-image="{{ image | product_img_url: 'large' }}" data-image-id="{{ image.id }}">
         <img class="thumbnail desktop-2" src="{{ image | product_img_url: 'small' }}" data-image-id="{{ image.id }}" alt="{{ image.alt }}" />
       </a>
-      {% endfor %} 
+      {% endfor %}
     </div>
   </div>
 
   <script type="text/javascript">
     $(document).ready(function(){
       $("#{{ product.id }}").elevateZoom({
-        gallery:'{{ product.id }}-gallery', 
+        gallery:'{{ product.id }}-gallery',
         cursor: 'pointer'
-        }); 
+        });
     });
   </script>
 
@@ -32,14 +32,14 @@
       <p class="product-price">
         {% if product.available %}
         {% if product.compare_at_price > product.price %}
-        <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
+        <span class="product-price onsale" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
         {% else %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>
         {% endif %}
         {% else %}
         <span class="product-price" itemprop="price">{{ 'products.product.sold_out' | t }}</span>
         {% endif %}
-      </p>  
+      </p>
 
       {% include 'short-form' %}
 
@@ -48,7 +48,7 @@
         <a href="{{ product.url | within_collection }}" class="full-click">{{ 'products.general.view_full' | t }}</a>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
 
 <script>
@@ -80,13 +80,13 @@
       // Otherwise put a 0 there
       $('input[name='+fieldName+']').val(1);
     }
-  }); 
-  
-  $('.add').on('click', addToCart ); 
+  });
+
+  $('.add').on('click', addToCart );
   {% if settings.show_multiple_currencies %}
   $(document).ajaxComplete(function() {
     Currency.convertAll(defaultCurrency, Currency.currentCurrency);
   });
   {% endif %}
-  
+
 </script>

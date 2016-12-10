@@ -95,7 +95,7 @@
       <p id="product-price">
         {% if product.available %}
         {% if product.compare_at_price > product.price %}
-        <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
+        <span class="product-price onsale" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
         {% else %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>
         {% endif %}

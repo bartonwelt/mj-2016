@@ -133,6 +133,17 @@ p {
   }
 }
 
+.was,
+.product-compare-price,
+.compare-price,
+.was-related {
+  color: {{ settings.text_color }};
+}
+
+.onsale {
+  color: {{ settings.sale-color }};
+}
+
 .prod-property {
   margin-left: auto;
   margin-right: auto;
@@ -145,6 +156,10 @@ p {
 input.error, select.error, textarea.error {
   border-color: red;
   color: red;
+}
+
+.sale-item {
+  background-color: {{ settings.sale-color }};
 }
 
 /* Cart

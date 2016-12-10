@@ -102,7 +102,7 @@
         {% unless is_retired %}
         {% if product.available %}
         {% if product.compare_at_price > product.price %}
-        <span class="product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
+        <span class="product-price onsale" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="was">{{ product.compare_at_price | money }}</span>
         {% include 'variant-inventory' %}
         {% else %}
         <span class="product-price" itemprop="price">{{ product.price | money }}</span>
