@@ -1,0 +1,16 @@
+{% assign bundle = product.metafields.bundle.collections | split: ", " %}
+{% assign bundle_count = bundle | size %}
+
+<div>
+  <h5>{{ 'products.bundle.heading' | t: count: bundle_count }}</h5>
+  <p>
+    {% for i in (1..bundle_count) %}
+    <select required id="bundle-{{i}}" name="properties[Bundle Item #{{i}}]" class="prod-property" data-error="{{ 'products.bundle.error' | t }}">
+      <option value="">{{ 'products.bundle.choose' | t }}</option>
+      {% for product in collections[bundle[forloop.index0]].products %}
+      <option value="{{ product.title }}">{{ product.title }}</option>
+      {% endfor %}
+    </select>
+    {% endfor %}
+  </p>
+</div>

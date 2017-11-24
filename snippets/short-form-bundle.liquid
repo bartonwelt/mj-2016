@@ -46,7 +46,11 @@
     <a class="up" field="quantity"><i class="icon-plus"></i></a>
     </div>
     {% endif %}
-    {% include 'product-bundle' %}
+    {% if template == 'product.bundle-list' %}
+      {% include 'product-bundle-list' %}
+    {% else %}
+      {% include 'product-bundle' %}
+    {% endif %}
     <input type="submit" name="button" class="add" value="{{ 'products.product.add_to_cart' | t }}" />
   </div>
   <p class="add-to-cart-msg"></p>
